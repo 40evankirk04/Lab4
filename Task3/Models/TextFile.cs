@@ -12,8 +12,8 @@ namespace Task3.Models
 
         public TextFile()
         {
-            FilePath = Open();
-            FileName = GetFileName();
+            _filePath = Open();
+            _fileName = GetFileName();
         }
 
         private string? _filePath;

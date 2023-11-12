@@ -1,10 +1,10 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Task3.Models
 {
     internal class InputText
     {
-
         public InputText(TextFile textFile)
         {
             ReadFile(textFile.FilePath);
@@ -41,7 +41,7 @@ namespace Task3.Models
             if (Text == null) 
                 return;
 
-            string[] signs = { "!", ",", "?", ".", ";", "-", ":" };
+            string[] signs = { "!", ",", "?", ".", ";", "-", ":", "(", ")" };
 
             for (int i = 0; i < Text.Count; i++)
             {
@@ -50,11 +50,6 @@ namespace Task3.Models
                     Text[i] = Text[i].Replace(sign, "");
                 }
             }
-        }
-
-        public void DeleteDublicates()
-        {
-            Text = Text.Distinct().ToList();
         }
     }
 }
