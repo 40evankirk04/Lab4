@@ -7,17 +7,32 @@ namespace Task3.ViewModels
 {
     internal class MainViewModel : INotifyPropertyChanged
     {
-        private RadixSort _radixSort;
-        public RadixSort RadixSort
+        private ABCSort _abcSort;
+        public ABCSort ABCSort
         {
             get
             {
-                return _radixSort;
+                return _abcSort;
             }
 
             set
             {
-                _radixSort = value;
+                _abcSort = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private BubbleSort _bubbleSort;
+        public BubbleSort BubbleSort
+        {
+            get
+            {
+                return _bubbleSort;
+            }
+
+            set
+            {
+                _bubbleSort = value;
                 OnPropertyChanged();
             }
         }
@@ -81,29 +96,56 @@ namespace Task3.ViewModels
             }
         }
 
-        private RelayCommand _openRadixSortWindowCommand;
-        public RelayCommand OpenRadixSortWindowCommand
+        private RelayCommand _openABCSortWindowCommand;
+        public RelayCommand OpenABCSortWindowCommand
         {
             get
             {
-                return _openRadixSortWindowCommand ??= new RelayCommand(obj =>
+                return _openABCSortWindowCommand ??= new RelayCommand(obj =>
                 {
-                    RadixSort = new(InputedText.Text);
-                    WordsCounter = new(RadixSort.SortedList);
+                    Words.Clear();
 
-                    FillWordsList();
+                    ABCSort = new(InputedText.Text);
+                    WordsCounter = new(ABCSort.SortedList);
 
-                    RadixSortWindow radixSortWindow = new()
+                    FillWordsList(ABCSort.SortedList);
+
+                    ABCSortWindow abcSortWindow = new()
                     {
                         DataContext = this
                     };
 
-                    radixSortWindow.Show();
+                    abcSortWindow.Show();
 
                 }, (obj) => OpenedFile?.FileName is not null); 
             }
         }
-        
+
+        private RelayCommand _openBubbleSortWindowCommand;
+        public RelayCommand OpenBubbleSortWindowCommand
+        {
+            get
+            {
+                return _openBubbleSortWindowCommand ??= new RelayCommand(obj =>
+                {
+                    Words.Clear();
+
+                    BubbleSort = new(InputedText.Text);
+                    WordsCounter = new(BubbleSort.SortedList);
+
+                    FillWordsList(BubbleSort.SortedList);
+
+                    BubbleSortWindow bubbleSortWindow = new()
+                    {
+                        DataContext= this
+                    };
+
+                    bubbleSortWindow.Show();
+
+                }, (obj) => OpenedFile?.FileName is not null);
+            }
+        }
+
         private RelayCommand _openFileCommand;
         public RelayCommand OpenFileCommand
         {
@@ -118,13 +160,13 @@ namespace Task3.ViewModels
             }
         }
 
-        private void FillWordsList()
-        { 
-            InputedText.DeleteDublicates();
+        private void FillWordsList(List<string> words)
+        {
+            words = words.Distinct().ToList();
 
-            for (int i = 0; i < InputedText.Text.Count; i++)
+            for (int i = 0; i < words.Count; i++)
             {
-                Words.Add(new Word(InputedText.Text[i], WordsCounter.CountedValues[i]));
+                Words.Add(new Word(words[i], WordsCounter.CountedValues[i]));
             }
         }
 
