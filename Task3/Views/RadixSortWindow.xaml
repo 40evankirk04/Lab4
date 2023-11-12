@@ -1,0 +1,40 @@
+﻿<Window x:Class="Task3.Views.RadixSortWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Task3.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Результаты Radix-сортировки" 
+        Height="450" 
+        Width="600"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignDarkBackground}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow">
+
+    <Grid>
+        <DataGrid ItemsSource="{Binding Path=Words}" 
+                  IsReadOnly="True" 
+                  AutoGenerateColumns="False" 
+                  Background="{DynamicResource MaterialDesignDarkBackground}" 
+                  Foreground="{DynamicResource MaterialDesignBackground}" 
+                  HorizontalContentAlignment="Center" 
+                  VerticalContentAlignment="Center" 
+                  HeadersVisibility="Column" 
+                  IsManipulationEnabled="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Слово" Binding="{Binding Path=Value}"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Path=Quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    
+</Window>
