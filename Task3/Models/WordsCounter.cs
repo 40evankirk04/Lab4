@@ -25,11 +25,21 @@
         {
             int count;
 
+            string savedWord = "";
+
             foreach(var word in words)
             {
-                count = words.Count(w => w == word);
+                if (word != savedWord)
+                {
+                    savedWord = word;
 
-                CountedValues.Add(count);
+                    count = words.Count(w => w == word);
+
+                    _countedValues.Add(count);
+                }
+
+                else
+                    continue;
             }
         }
     }
