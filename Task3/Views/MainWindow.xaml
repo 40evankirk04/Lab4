@@ -32,19 +32,19 @@
 
         <Button x:Name="bubbleSortBtn"
                 Grid.Row="1"
-                Content="Сортировка пузырьком" 
-                Command="{Binding OpenRadixSortWindowCommand}"
+                Content="Bubble-сортировка" 
+                Command="{Binding OpenBubbleSortWindowCommand}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Margin="0,47,0,0"/>
 
         <Button x:Name="ABCSortBtn"
                 Grid.Row="1"
-                Content="radix-cортировка" 
-                Command="{Binding OpenRadixSortWindowCommand}"
+                Content="ABC-cортировка" 
+                Command="{Binding OpenABCSortWindowCommand}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="0,92,0,0"/>
+                Margin="0,92,0,0" Cursor="Hand"/>
 
         <Button x:Name="openFileBtn"
                 Grid.Row="1"
