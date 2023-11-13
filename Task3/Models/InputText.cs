@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Task3.Models
 {
@@ -9,6 +8,7 @@ namespace Task3.Models
         {
             ReadFile(textFile.FilePath);
             TrimSignsFromWords();
+            MakeLowerCase();
         }
 
         public List<string>? Text { get; set; }
@@ -49,6 +49,17 @@ namespace Task3.Models
                 {
                     Text[i] = Text[i].Replace(sign, "");
                 }
+            }
+        }
+        
+        private void MakeLowerCase()
+        {
+            if (Text == null)
+                return;
+
+            for (int i = 0; i < Text.Count; i++)
+            {
+                Text[i] = Text[i].ToLower();
             }
         }
     }
