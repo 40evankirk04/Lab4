@@ -26,10 +26,14 @@
                   AutoGenerateColumns="False" 
                   Background="{DynamicResource MaterialDesignDarkBackground}" 
                   Foreground="{DynamicResource MaterialDesignBackground}" 
+                  ColumnHeaderStyle="{DynamicResource MaterialDesignFlatButton}"
                   HorizontalContentAlignment="Center" 
                   VerticalContentAlignment="Center" 
                   HeadersVisibility="Column" 
-                  IsManipulationEnabled="True">
+                  IsManipulationEnabled="False" 
+                  CanUserReorderColumns="False" 
+                  CanUserResizeColumns="False" 
+                  CanUserSortColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Слово" Binding="{Binding Path=Value}"/>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Path=Quantity}"/>
