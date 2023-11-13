@@ -11,18 +11,29 @@ namespace Task3.Models
             MakeLowerCase();
         }
 
-        public List<string>? Text { get; set; }
+        private List<string>? _text;
+        public List<string>? Text 
+        {
+            get
+            {
+                return _text;
+            }
+            set
+            {
+                _text = value;
+            } 
+        }
 
-        private void ReadFile(string path)
+        private void ReadFile(string? path)
         {
             if (path == null)
                 return;
 
-            List<string> words = new List<string>();
+            List<string> words = new();
 
             using (StreamReader sr = new(path))
             {
-                string line;
+                string? line;
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] lineWords = line.Split(' ');
@@ -33,33 +44,33 @@ namespace Task3.Models
                 }
             }
 
-            Text = words;
+            _text = words;
         }
 
         private void TrimSignsFromWords()
         {
-            if (Text == null) 
+            if (_text == null) 
                 return;
 
-            string[] signs = { "!", ",", "?", ".", ";", "-", ":", "(", ")" };
+            char[] signs = { '!', ',', '?', '.', ';', '-', ':', '(', ')', '"' };
 
-            for (int i = 0; i < Text.Count; i++)
+            for (int i = 0; i < _text.Count; i++)
             {
-                foreach(string sign in signs)
+                foreach(char sign in signs)
                 {
-                    Text[i] = Text[i].Replace(sign, "");
+                    _text[i] = _text[i].Trim(sign);
                 }
             }
         }
         
         private void MakeLowerCase()
         {
-            if (Text == null)
+            if (_text == null)
                 return;
 
-            for (int i = 0; i < Text.Count; i++)
+            for (int i = 0; i < _text.Count; i++)
             {
-                Text[i] = Text[i].ToLower();
+                _text[i] = _text[i].ToLower();
             }
         }
     }
