@@ -25,7 +25,7 @@
         {
             int count;
 
-            string savedWord = "";
+            string? savedWord = null;
 
             foreach(var word in words)
             {

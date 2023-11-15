@@ -22,10 +22,10 @@ namespace Task3.Models
             }
         }
 
-        public void TestSorting(List<string> wordsToSort)
+        public List<string> TestSorting(List<string> wordsToSort)
         {
             if (wordsToSort == null || SortingToTest == null)
-                return;
+                return new List<string>();
 
             _stopWatch.Start();
 
@@ -36,6 +36,8 @@ namespace Task3.Models
             _timeOfSorting = _stopWatch.ElapsedMilliseconds;
 
             _stopWatch.Reset();
+
+            return wordsToSort;
         }
     }
 }

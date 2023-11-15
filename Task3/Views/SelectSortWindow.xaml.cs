@@ -5,9 +5,9 @@ namespace Task3.Views
     /// <summary>
     /// Логика взаимодействия для BubbleSortWindow.xaml
     /// </summary>
-    public partial class BubbleSortWindow : Window
+    public partial class SelectSortWindow : Window
     {
-        public BubbleSortWindow()
+        public SelectSortWindow()
         {
             InitializeComponent();
         }

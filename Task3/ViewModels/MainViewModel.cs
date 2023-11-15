@@ -125,12 +125,12 @@ namespace Task3.ViewModels
 
                     FillWordsList(SelectSorting.SortedList);
 
-                    BubbleSortWindow bubbleSortWindow = new()
+                    SelectSortWindow selectSortWindow = new()
                     {
                         DataContext= this
                     };
 
-                    bubbleSortWindow.Show();
+                    selectSortWindow.Show();
 
                 }, (obj) => OpenedFile?.FileName is not null);
             }

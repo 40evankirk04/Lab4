@@ -33,7 +33,7 @@
            IsManipulationEnabled="False" 
            CanUserReorderColumns="False" 
            CanUserResizeColumns="False" 
-           CanUserSortColumns="False" HorizontalAlignment="Left" Width="300" Margin="0,38,0,0">
+           CanUserSortColumns="False" HorizontalAlignment="Left" Width="237" Margin="0,38,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Время (в мс)" Binding="{Binding Path=TimeOfSorting}"/>
             </DataGrid.Columns>
@@ -51,26 +51,48 @@
             IsManipulationEnabled="False" 
             CanUserReorderColumns="False" 
             CanUserResizeColumns="False" 
-            CanUserSortColumns="False" HorizontalAlignment="Left" Width="300" Margin="300,38,0,0">
+            CanUserSortColumns="False" HorizontalAlignment="Left" Width="236" Margin="364,38,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Время (в мс)" Binding="{Binding Path=TimeOfSorting}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
+        <DataGrid ItemsSource="{Binding Path=SizesOfTexts}" 
+            IsReadOnly="True" 
+            AutoGenerateColumns="False" 
+            Background="{DynamicResource MaterialDesignDarkBackground}" 
+            Foreground="{DynamicResource MaterialDesignBackground}" 
+            ColumnHeaderStyle="{DynamicResource MaterialDesignFlatButton}"
+            HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center" 
+            HeadersVisibility="Column" 
+            IsManipulationEnabled="False" 
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False" 
+            CanUserSortColumns="False" 
+            HorizontalAlignment="Center" 
+            Width="127" 
+            Margin="0,38,0,0">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Размер текста" Binding="{Binding}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button 
             Content="Select-сортировка" 
             HorizontalAlignment="Left" 
             Margin="0,1,0,0" 
             VerticalAlignment="Top" 
-            Width="300"
+            Width="237"
             Style="{DynamicResource MaterialDesignFlatButton}"/>
-        
+
         <Button
             Content="ABC-сортировка" 
             HorizontalAlignment="Left" 
-            Margin="300,1,0,0" 
+            Margin="364,1,0,0" 
             VerticalAlignment="Top" 
-            Width="300"
+            Width="236"
             Style="{DynamicResource MaterialDesignFlatButton}"/>
     </Grid>
 
