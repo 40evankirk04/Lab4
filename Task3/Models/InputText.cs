@@ -4,9 +4,11 @@ namespace Task3.Models
 {
     internal class InputText
     {
+        public InputText() { }
+
         public InputText(TextFile textFile)
         {
-            ReadFile(textFile.FilePath);
+            GetTextFromFile(textFile.FilePath);
             TrimSignsFromWords();
             MakeLowerCase();
         }
@@ -24,7 +26,7 @@ namespace Task3.Models
             } 
         }
 
-        private void ReadFile(string? path)
+        public void GetTextFromFile(string? path)
         {
             if (path == null)
                 return;
