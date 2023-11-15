@@ -7,35 +7,33 @@ namespace Task3.ViewModels
 {
     internal class MainViewModel : INotifyPropertyChanged
     {
-        private ABCSort _abcSort;
-        public ABCSort ABCSort
+        private ABCSorting _abcSorting;
+        public ABCSorting ABCSorting
         {
             get
             {
-                return _abcSort;
+                return _abcSorting;
             }
 
             set
             {
-                _abcSort = value;
-                OnPropertyChanged();
+                _abcSorting = value;
             }
         }
 
-        private BubbleSort _bubbleSort;
-        public BubbleSort BubbleSort
+        private SelectSorting _selectSorting;
+        public SelectSorting SelectSorting
         {
             get
             {
-                return _bubbleSort;
+                return _selectSorting;
             }
-
             set
             {
-                _bubbleSort = value;
-                OnPropertyChanged();
+                _selectSorting = value;
             }
         }
+        
 
         private InputText _inputedText;
         public InputText InputedText 
@@ -47,7 +45,6 @@ namespace Task3.ViewModels
             set
             {
                 _inputedText = value;
-                OnPropertyChanged();
             }
         }
 
@@ -61,7 +58,7 @@ namespace Task3.ViewModels
 
             set 
             { 
-                _openedFile = value; 
+                _openedFile = value;
                 OnPropertyChanged();
             } 
         }
@@ -77,38 +74,31 @@ namespace Task3.ViewModels
             set 
             { 
                 _wordsCounter = value;
-                OnPropertyChanged();
             }
         }
 
-        private List<Word> _words = new();
+        private readonly List<Word> _words = new();
         public List<Word> Words
         {
             get
             {
                 return _words;
             }
-
-            set 
-            { 
-                _words = value;
-                OnPropertyChanged();
-            }
         }
 
-        private RelayCommand _openABCSortWindowCommand;
-        public RelayCommand OpenABCSortWindowCommand
+        private RelayCommand _openABCSortingWindowCommand;
+        public RelayCommand OpenABCSortingWindowCommand
         {
             get
             {
-                return _openABCSortWindowCommand ??= new RelayCommand(obj =>
+                return _openABCSortingWindowCommand ??= new RelayCommand(obj =>
                 {
                     Words.Clear();
 
-                    ABCSort = new(InputedText.Text);
-                    WordsCounter = new(ABCSort.SortedList);
+                    ABCSorting = new(InputedText.Text);
+                    WordsCounter = new(ABCSorting.SortedList);
 
-                    FillWordsList(ABCSort.SortedList);
+                    FillWordsList(ABCSorting.SortedList);
 
                     ABCSortWindow abcSortWindow = new()
                     {
@@ -121,19 +111,19 @@ namespace Task3.ViewModels
             }
         }
 
-        private RelayCommand _openBubbleSortWindowCommand;
-        public RelayCommand OpenBubbleSortWindowCommand
+        private RelayCommand _openSelectSortingWindowCommand;
+        public RelayCommand OpenSelectSortingWindowCommand
         {
             get
             {
-                return _openBubbleSortWindowCommand ??= new RelayCommand(obj =>
+                return _openSelectSortingWindowCommand ??= new RelayCommand(obj =>
                 {
                     Words.Clear();
 
-                    BubbleSort = new(InputedText.Text);
-                    WordsCounter = new(BubbleSort.SortedList);
+                    SelectSorting = new(InputedText.Text);
+                    WordsCounter = new(SelectSorting.SortedList);
 
-                    FillWordsList(BubbleSort.SortedList);
+                    FillWordsList(SelectSorting.SortedList);
 
                     BubbleSortWindow bubbleSortWindow = new()
                     {
@@ -156,6 +146,27 @@ namespace Task3.ViewModels
                     OpenedFile = new TextFile();
                     InputedText = new InputText(OpenedFile);
 
+                });
+            }
+        }
+
+        private RelayCommand _testCommand;
+        public RelayCommand TestCommand
+        {
+            get
+            {
+                return _testCommand ??= new RelayCommand(obj => {
+
+                    STResultViewModel _STResultviewModel = new();
+
+                    _STResultviewModel.Start();
+
+                    STResultWindow STResultWindow = new STResultWindow()
+                    {
+                        DataContext = _STResultviewModel
+                    };
+
+                    STResultWindow.Show();
                 });
             }
         }

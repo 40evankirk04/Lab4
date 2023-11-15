@@ -32,8 +32,8 @@
 
         <Button x:Name="bubbleSortBtn"
                 Grid.Row="1"
-                Content="Bubble-сортировка" 
-                Command="{Binding OpenBubbleSortWindowCommand}"
+                Content="Select-сортировка" 
+                Command="{Binding OpenSelectSortingWindowCommand}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Margin="0,47,0,0"/>
@@ -41,7 +41,7 @@
         <Button x:Name="ABCSortBtn"
                 Grid.Row="1"
                 Content="ABC-cортировка" 
-                Command="{Binding OpenABCSortWindowCommand}"
+                Command="{Binding OpenABCSortingWindowCommand}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Margin="0,92,0,0" Cursor="Hand"/>
@@ -65,6 +65,14 @@
                    HorizontalAlignment="Center" 
                    Foreground="#FF8A8A8A"
                    FontSize="11" Cursor=""/>
+        
+        <Button x:Name="testersResult"
+            Grid.Row="1"
+            Content="Тестирование сортировок" 
+            Command="{Binding TestCommand}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0,248,0,0" Cursor="Hand"/>
     </Grid>
 
 </Window>
