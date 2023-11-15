@@ -1,14 +1,16 @@
 ﻿namespace Task3.Models
 {
-    internal class ABCSort
+    internal class ABCSorting
     {
-        public ABCSort(List<string> words)
+        public ABCSorting() { }
+
+        public ABCSorting(List<string> words)
         {
             Sort(words);
         }
 
-        private List<string> _sortedList;
-        public List<string> SortedList
+        private List<string>? _sortedList;
+        public List<string>? SortedList
         {
             get
             {
@@ -21,7 +23,7 @@
             }
         }
 
-        private void Sort(List<string> words)
+        public void Sort(List<string> words)
         {
             if (words == null || words.Count <= 1)
                 return;
