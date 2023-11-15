@@ -16,6 +16,8 @@ namespace Task3.Models
             _fileName = GetFileName();
         }
 
+        public TextFile(string none = "") { }
+
         private string? _filePath;
         public string? FilePath
         {
@@ -44,7 +46,7 @@ namespace Task3.Models
             }
         }
 
-        private string Open()
+        private string? Open()
         {
             bool? success = openFileDialog.ShowDialog();
 
@@ -54,12 +56,17 @@ namespace Task3.Models
                 return null;
         }
 
-        private string GetFileName()
+        private string? GetFileName()
         {
             if (FilePath is null) return null;
 
             else
                 return Path.GetFileName(openFileDialog.FileName);
+        }
+
+        public List<string> GetAllFiles()
+        {
+            return Directory.GetFiles("Texts", "*", SearchOption.TopDirectoryOnly).ToList();
         }
     }
 }
